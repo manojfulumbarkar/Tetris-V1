@@ -33,10 +33,10 @@ variable "availability_zones" {
 
 #get public subnets for cluster
 data "aws_subnets" "public" {
+availability_zone = var.availability_zones
   filter {
     name   = "vpc-id"
     values = [data.aws_vpc.default.id]
-    availability_zone = var.availability_zones
   }
 }
 #cluster provision
